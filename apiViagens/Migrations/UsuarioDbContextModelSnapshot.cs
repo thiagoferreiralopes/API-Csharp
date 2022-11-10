@@ -9,8 +9,8 @@ using apiViagens.Database;
 
 namespace apiViagens.Migrations
 {
-    [DbContext(typeof(UsuarioDbContext))]
-    partial class UsuarioDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(ClienteDbContext))]
+    partial class ClienteDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -19,25 +19,29 @@ namespace apiViagens.Migrations
                 .HasAnnotation("ProductVersion", "6.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("apiViagens.Model.Usuario", b =>
+            modelBuilder.Entity("apiViagens.Model.Cliente", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    b.Property<DateTime>("DataNascimento")
-                        .HasColumnType("datetime(6)")
-                        .HasColumnName("data_nascimento");
+                    b.Property<DateTime>("Email")
+                        .HasColumnType("longtext")
+                        .HasColumnName("Email");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("nome");
 
+                    b.Property<int>("Senha_Cliente")
+                        .HasColumnType("int")
+                        .HasColumnName("Senha_Cliente");
+
                     b.HasKey("Id");
 
-                    b.ToTable("usuario", (string)null);
+                    b.ToTable("Cliente", (string)null);
                 });
 #pragma warning restore 612, 618
         }

@@ -4,39 +4,39 @@ using Microsoft.EntityFrameworkCore;
 
 namespace apiViagens.Repository
 {
-    public class UsuarioRepository : IUsuarioRepository 
+    public class ClienteRepository : IClienteRepository 
    {
         //injetar dependencia do contexto
-        private readonly UsuarioDbContext _context;
+        private readonly ClienteDbContext _context;
 
-        public UsuarioRepository(UsuarioDbContext context) { 
+        public ClienteRepository(ClienteDbContext context) { 
             _context = context;
         }
 
-        public void AddUsuario(Usuario usuario)
+        public void AddCliente(Cliente Cliente)
         {
-            _context.Add(usuario);
+            _context.Add(Cliente);
         }
 
-        public void AtualizarUsuario(Usuario usuario)
+        public void AtualizarCliente(Cliente Cliente)
         {
-            _context.Update(usuario);
+            _context.Update(Cliente);
         }
 
-        public void DeletarUsuario(Usuario usuario)
+        public void DeletarCliente(Cliente Cliente)
         {
-            _context.Remove(usuario);
+            _context.Remove(Cliente);
         }
 
-        public async Task<Usuario> GetUsuarioById(int id)
+        public async Task<Cliente> GetClienteById(int id)
         {
-            return await _context.Usuarios
+            return await _context.Clientes
             .Where(x => x.Id == id).FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<Usuario>> GetUsuarios()
+        public async Task<IEnumerable<Cliente>> GetClientes()
         {
-            return await _context.Usuarios.ToListAsync();
+            return await _context.Clientes.ToListAsync();
         }
 
         public async Task<bool> SaveChangesAsync()

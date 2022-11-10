@@ -3,22 +3,23 @@ using apiViagens.Model;
 
 namespace apiViagens.Database
 {
-    public class UsuarioDbContext : DbContext
+    public class ClienteDbContext : DbContext
     {
-        public UsuarioDbContext(DbContextOptions<UsuarioDbContext>
+        public ClienteDbContext(DbContextOptions<ClienteDbContext>
         options) : base(options){
 
         }
-        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder){
 
-            var usuario = modelBuilder.Entity<Usuario>();
-            usuario.ToTable("usuario");
-            usuario.HasKey(x => x.Id);
-            usuario.Property(x => x.Id).HasColumnName("id").ValueGeneratedOnAdd();
-            usuario.Property(x => x.Nome).HasColumnName("nome").IsRequired();
-            usuario.Property(x => x.DataNascimento).HasColumnName("data_nascimento");
+            var  = modelBuilder.Entity<Cliente>();
+            cliente.ToTable("cliente");
+            cliente.HasKey(x => x.Id_Cliente);
+            cliente.Property(x => x.Id_Cliente).HasColumnName("id_Cliente").ValueGeneratedOnAdd();
+            cliente.Property(x => x.Nome).HasColumnName("nome").IsRequired();
+            cliente.Property(x => x.Email).HasColumnName("email");
+            cliente.Property(x => x.Senha_Cliente).HasColumnName("senha_cliente").IsRequired();
         }
 
     }

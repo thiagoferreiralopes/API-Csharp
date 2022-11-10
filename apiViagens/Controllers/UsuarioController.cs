@@ -7,12 +7,12 @@ namespace apiViagens.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UsuarioController : ControllerBase
+    public class ClienteController : ControllerBase
     {
         //injetar dependencia do repositorio
-        private readonly IUsuarioRepository _repository;
+        private readonly IClienteRepository _repository;
 
-        public UsuarioController(IUsuarioRepository repository)
+        public ClienteController(IClienteRepository repository)
         {
             _repository = repository;
         }
@@ -20,37 +20,37 @@ namespace apiViagens.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var usuarios = await _repository.GetUsuarios();
-            return usuarios.Any() ? Ok(usuarios) : NoContent();
+            var Clientes = await _repository.GetClientes();
+            return Clientes.Any() ? Ok(Clientes) : NoContent();
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var usuario = await _repository.GetUsuarioById(id);
-            return usuario != null
-            ? Ok(usuario) : NotFound("Usuário não encontrado.");
+            var Cliente = await _repository.GetClienteById(id);
+            return Cliente != null
+            ? Ok(Cliente) : NotFound("Usuário não encontrado.");
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(Usuario usuario)
+        public async Task<IActionResult> Post(Cliente Cliente)
         {
-            _repository.AddUsuario(usuario);
+            _repository.AddCliente(Cliente);
             return await _repository.SaveChangesAsync()
             ? Ok("Usuário adicionado") : BadRequest("Algo deu errado.");
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Atualizar(int id, Usuario usuario)
+        public async Task<IActionResult> Atualizar(int id, Cliente Cliente)
         {
-            var usuarioExiste = await _repository.GetUsuarioById(id);
-            if (usuarioExiste == null) return NotFound("Usuário não encontrado");
+            var ClienteExiste = await _repository.GetClienteById(id);
+            if (ClienteExiste == null) return NotFound("Usuário não encontrado");
 
-            usuarioExiste.Nome = usuario.Nome ?? usuarioExiste.Nome;
-            usuarioExiste.DataNascimento = usuario.DataNascimento != new DateTime()
-            ? usuario.DataNascimento : usuarioExiste.DataNascimento;
+            ClienteExiste.Nome = Cliente.Nome ?? ClienteExiste.Nome;
+            ClienteExiste.Email = Cliente.Email
+            ? Cliente.Email : ClienteExiste.Email;
 
-            _repository.AtualizarUsuario(usuarioExiste);
+            _repository.AtualizarCliente(ClienteExiste);
 
             return await _repository.SaveChangesAsync()
             ? Ok("Usuário atualizado.") : BadRequest("Algo deu errado.");
@@ -59,14 +59,14 @@ namespace apiViagens.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var usuarioExiste = await _repository.GetUsuarioById(id);
-            if (usuarioExiste == null)
-                return NotFound("Usuário não encontrado");
+            var ClienteExiste = await _repository.GetClienteById(id);
+            if (ClienteExiste == null)
+                return NotFound("Cliente não encontrado");
 
-            _repository.DeletarUsuario(usuarioExiste);
+            _repository.DeletarCliente(ClienteExiste);
 
             return await _repository.SaveChangesAsync()
-            ? Ok("Usuário deletado.") : BadRequest("Algo deu errado.");
+            ? Ok("Cliente deletado.") : BadRequest("Algo deu errado.");
         }
 
     }

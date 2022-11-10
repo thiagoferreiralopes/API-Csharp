@@ -10,7 +10,7 @@ using apiViagens.Database;
 
 namespace apiViagens.Migrations
 {
-    [DbContext(typeof(UsuarioDbContext))]
+    [DbContext(typeof(ClienteDbContext))]
     [Migration("20221106193655_InitialCreate")]
     partial class InitialCreate
     {
@@ -21,22 +21,26 @@ namespace apiViagens.Migrations
                 .HasAnnotation("ProductVersion", "6.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("apiViagens.Model.Usuario", b =>
+            modelBuilder.Entity("apiViagens.Model.Cliente", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DataNascimento")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("Senha_Cliente")
+                        .IsRequired()
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Usuarios");
+                    b.ToTable("Clientes");
                 });
 #pragma warning restore 612, 618
         }
