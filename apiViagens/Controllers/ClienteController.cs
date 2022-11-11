@@ -37,23 +37,23 @@ namespace apiViagens.Controllers
         {
             _repository.AddCliente(Cliente);
             return await _repository.SaveChangesAsync()
-            ? Ok("Usuário adicionado") : BadRequest("Algo deu errado.");
+            ? Ok("Cliente adicionado") : BadRequest("Algo deu errado.");
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Atualizar(int id, Cliente Cliente)
         {
             var ClienteExiste = await _repository.GetClienteById(id);
-            if (ClienteExiste == null) return NotFound("Usuário não encontrado");
+            if (ClienteExiste == null) return NotFound("Liente não encontrado");
 
             ClienteExiste.Nome = Cliente.Nome ?? ClienteExiste.Nome;
-            ClienteExiste.Email = Cliente.Email
-            ? Cliente.Email : ClienteExiste.Email;
+            ClienteExiste.Email = Cliente.Email ??ClienteExiste.Email;
+            ClienteExiste.Senha_Cliente = Cliente.Senha_Cliente ??ClienteExiste.Senha_Cliente;
 
             _repository.AtualizarCliente(ClienteExiste);
 
             return await _repository.SaveChangesAsync()
-            ? Ok("Usuário atualizado.") : BadRequest("Algo deu errado.");
+            ? Ok("Cliente atualizado.") : BadRequest("Algo deu errado.");
         }
 
         [HttpDelete("{id}")]
