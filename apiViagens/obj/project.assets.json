@@ -1042,11 +1042,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Remakker\\Desktop\\entrega6\\apiViagens\\apiViagens.csproj",
+      "projectUniqueName": "C:\\Users\\Remakker\\Desktop\\entrega6\\apiViagens\\apiViagens.csproj",
       "projectName": "apiViagens",
-      "projectPath": "c:\\Users\\Remakker\\Desktop\\entrega6\\apiViagens\\apiViagens.csproj",
+      "projectPath": "C:\\Users\\Remakker\\Desktop\\entrega6\\apiViagens\\apiViagens.csproj",
       "packagesPath": "C:\\Users\\Remakker\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Remakker\\Desktop\\entrega6\\apiViagens\\obj\\",
+      "outputPath": "C:\\Users\\Remakker\\Desktop\\entrega6\\apiViagens\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Remakker\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -1117,7 +1117,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

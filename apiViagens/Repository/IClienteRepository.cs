@@ -4,7 +4,7 @@ namespace apiViagens.Repository
 {
     public interface IClienteRepository
     {
-        Task<IEnumerable<Cliente>> GetUsuarios();
+        Task<IEnumerable<Cliente>> GetClientes();
         Task<Cliente> GetClienteById(int id);
         void AddCliente(Cliente cliente);
         void AtualizarCliente(Cliente cliente);

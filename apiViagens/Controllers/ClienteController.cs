@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using apiViagens.Model;
 using apiViagens.Repository;
-using apiViagens.Properties;
+
 
 namespace apiViagens.Controllers
 {

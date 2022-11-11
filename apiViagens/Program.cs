@@ -1,5 +1,4 @@
 using apiViagens.Database;
-using apiViagens.Properties;
 using apiViagens.Repository;
 using Microsoft.EntityFrameworkCore;
 
